@@ -1,12 +1,13 @@
 [package]
 name = "vault_iam_auth"
-version = "0.1.0"
+version = "0.1.1"
 description = "HashiCorp Vault authentication for the AWS IAM engine"
 readme = "README.md"
 repository = "https://github.com/callensm/vault-iam-auth-rs"
 license = "MIT"
 authors = ["Matt Callens <callensmatt@gmail.com>"]
 keywords = ["hashicorp", "vault", "aws", "iam", "authentication"]
+categories = ["api-bindings", "authentication", ]
 edition = "2018"
 
 [dependencies]
