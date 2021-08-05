@@ -10,12 +10,31 @@ Tiny library for Vault authentication using the AWS IAM engine.
 
 The `authenticate` function returns a `serde_json::Value` of the standard Vault login API response body.
 
-```rs
-use vault_iam_auth::authenticate;
+```rust
+use std::error::Error;
+
+use serde_json::Value;
+use vault_iam_auth::{authenticate, Parameters};
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-  let resp: serde_json::Value = authenticate("https://vault.address.com", "aws", "my-role", None).await?;
+async fn main() -> Result<(), Box<dyn Error>> {
+  let params = Parameters {
+    iam_server_id: None,
+    mount_path: String::from("aws"),
+    role: String::from("my-role"),
+    vault_address: String::from("https://vault.address.com:8200"),
+  };
+
+  let response: serde_json::Value = authenticate(&params).await?;
+
+  let token = response
+    .get("auth")
+    .unwrap()
+    .get("client_token")
+    .unwrap()
+    .as_str()
+    .unwrap();
+  println!("{}", token);
   Ok(())
 }
 ```

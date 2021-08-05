@@ -1,6 +1,6 @@
 [package]
 name = "vault_iam_auth"
-version = "0.1.1"
+version = "0.2.0"
 description = "HashiCorp Vault authentication for the AWS IAM engine"
 readme = "README.md"
 repository = "https://github.com/callensm/vault-iam-auth-rs"
