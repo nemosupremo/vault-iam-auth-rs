@@ -2,8 +2,9 @@ use std::collections::HashMap;
 
 use serde::Deserialize;
 
-#[derive(Deserialize, Debug)]
-pub struct TokenResponse<T> {
+#[derive(Deserialize, Debug, Default)]
+#[serde(default)]
+pub struct TokenResponse<T: Default> {
     pub data: Option<T>,
     pub auth: Option<AuthInfo>,
     pub lease_id: String,
@@ -14,7 +15,8 @@ pub struct TokenResponse<T> {
     pub wrap_info: Option<WrapInfo>,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Default)]
+#[serde(default)]
 pub struct AuthInfo {
     pub client_token: String,
     pub accessor: String,
@@ -28,7 +30,8 @@ pub struct AuthInfo {
     pub orphan: bool,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Default)]
+#[serde(default)]
 pub struct WrapInfo {
     pub token: String,
     pub accessor: String,
