@@ -7,19 +7,24 @@ repository = "https://github.com/callensm/vault-iam-auth-rs"
 license = "MIT"
 authors = ["Matt Callens <callensmatt@gmail.com>"]
 keywords = ["hashicorp", "vault", "aws", "iam", "authentication"]
-categories = ["api-bindings", "authentication", ]
-edition = "2018"
+categories = ["api-bindings", "authentication"]
+edition = "2021"
 
 [dependencies]
-base64 = "0.13.0"
-reqwest = { version = "0.11.4", features = ["json"] }
-rusoto_core = "0.47.0"
-rusoto_signature = "0.47.0"
-serde_json = "1.0.66"
-serde_urlencoded = "0.7.0"
+base64 = "0.13"
+tokio = "1"
+hyper = { version = "1", features = ["client", "http1"] }
+hyper-util = { version = "0.1", default-features = false, features = ["tokio"] }
+http-body-util = "0.1"
+aws-config = { version = "1" }
+aws-sigv4 = { version = "1" }
+aws-credential-types = { version = "1" }
+serde_json = "1"
+serde_urlencoded = "0.7"
+serde = { version = "1", features = ["derive"] }
 
 [dev-dependencies]
-tokio = "1.9.0"
+tokio = { version = "1", features = ["full"] }
 
 [[example]]
 name = "basic"
