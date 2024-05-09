@@ -10,6 +10,10 @@ keywords = ["hashicorp", "vault", "aws", "iam", "authentication"]
 categories = ["api-bindings", "authentication", ]
 edition = "2018"
 
+[features]
+default = []
+rustls-tls = ["reqwest/rustls-tls"]
+
 [dependencies]
 base64 = "0.13.0"
 reqwest = { version = "0.11.4", features = ["json"] }
